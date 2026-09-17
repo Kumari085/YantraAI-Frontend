@@ -1,10 +1,10 @@
-/**
- * AegisAI Sovereign Agent Simulation Engine
- * 
- * NOTE: This file provides an isolated, spec-compliant simulation fallback for 
- * offline demonstrations or frontend testing when the FastAPI backend is not running.
- * It strictly adheres to the universal envelope schema and event types.
- */
+// **
+//  * AegisAI Sovereign Agent Simulation Engine
+//  * 
+//  * NOTE: This file provides an isolated, spec-compliant simulation fallback for 
+//  * offline demonstrations or frontend testing when the FastAPI backend is not running.
+//  * It strictly adheres to the universal envelope schema and event types.
+//  */
 
 class MockAgentSimulator {
   constructor() {
@@ -265,7 +265,7 @@ class MockAgentSimulator {
       }, 500);
 
       // 8. Artifact
-      const artifactId = `art-deliverable-${Date.now().toString().slice(-4)}`;
+      const artifactId = `Multi-stage analysis conducted on local hardware-${Date.now().toString().slice(-4)}`;
       await emit('artifact', {
         id: artifactId,
         title: 'ASME_Industrial_Inspection_Audit_Report.docx',
@@ -278,121 +278,40 @@ class MockAgentSimulator {
         requiresApproval: true,
       }, 600);
 
-      // 9. Streaming message chunks
-      const fullResponse = `Based on the autonomous multi-stage analysis conducted on local hardware across the full 12-vessel fleet, here are the consolidated findings:\n\n` +
-        `Executive Summary\n` +
-        `All 12 vessels were surveyed across wall thickness, surface integrity, corrosion trend, sensor calibration validity, and maintenance history. 9 vessels rate LOW risk, 2 rate MODERATE risk pending manual weld re-review, and 1 rates ELEVATED risk due to accelerated localized corrosion at a nozzle interface. No vessel requires immediate shutdown. This memo covers each vessel individually, followed by fleet-wide calibration, compliance, and action-item sections.\n\n` +
 
-        `1. Vessel V-101, Primary Reactor Shell\n` +
-        `Wall Thickness: Minimum measured thickness 0.3721 inches against a code-required minimum of 0.1000 inches, ASME UG-99. Corrosion allowance buffer: 0.2721 inches.\n` +
-        `- Cluster A (0 to 90 degrees): avg 0.3812 in, std dev 0.0041 in\n` +
-        `- Cluster B (90 to 180 degrees): avg 0.3795 in, std dev 0.0038 in\n` +
-        `- Cluster C (180 to 270 degrees): avg 0.3664 in, std dev 0.0052 in, flagged for re-scan\n` +
-        `- Cluster D (270 to 360 degrees): avg 0.3701 in, std dev 0.0044 in\n` +
-        `- Head-to-shell transition weld: 0.3688 in, no anomalous taper\n` +
-        `Corrosion Regression: rate -0.0031 in/yr, R-squared 0.94, 95% CI -0.0038 to -0.0024. Remaining safe service life: 87.7 years.\n` +
-        `Visual Inspection: 214 frames processed. Micro-pitting near bolts 14 through 17, depth 0.008 to 0.014 in, cosmetic. One low-confidence, 0.42, weld-toe reflective artifact on south seam, queued for manual review.\n` +
-        `Maintenance Log: WO-2291 relief valve check, on schedule, 34 days out. WO-2304 insulation repair, overdue 9 days, low priority. WO-2318 bolt torque re-check, complete, pending sign-off.\n` +
-        `Sensor Calibration: Ultrasonic thickness gauge UT-07 last calibrated 41 days ago, within the 90-day window. Vision rig camera array C-3 calibrated 12 days ago.\n` +
-        `Trend vs. Last 3 Reports: thickness loss consistent with prior linear model, no acceleration detected.\n` +
-        `Risk Rating: LOW\n\n` +
 
-        `2. Vessel V-102, Secondary Separator\n` +
-        `Wall Thickness: Minimum 0.4103 in vs. required 0.1250 in. Buffer: 0.2853 in.\n` +
-        `- Cluster A: avg 0.4211 in | Cluster B: avg 0.4189 in | Cluster C: avg 0.4095 in | Cluster D: avg 0.4177 in\n` +
-        `Corrosion Regression: rate -0.0022 in/yr, R-squared 0.91. Remaining safe life: 129.7 years.\n` +
-        `Visual Inspection: 178 frames, no pitting, no seam anomalies, gasket witness marks uniform.\n` +
-        `Maintenance Log: no open work orders.\n` +
-        `Sensor Calibration: all instruments within calibration window.\n` +
-        `Risk Rating: LOW\n\n` +
+ const fullResponse = `Based on the autonomous multi-stage analysis conducted on local hardware across the full 5-vessel fleet, here are the consolidated findings:\n\n` +
 
-        `3. Vessel V-103, Knockout Drum\n` +
-        `Wall Thickness: Minimum 0.2884 in vs. required 0.1000 in. Buffer: 0.1884 in.\n` +
-        `- Cluster A: avg 0.2951 in | Cluster B: avg 0.2903 in | Cluster C: avg 0.2811 in, below-average, re-scan flagged | Cluster D: avg 0.2882 in\n` +
-        `Corrosion Regression: rate -0.0044 in/yr, R-squared 0.89. Remaining safe life: 42.8 years.\n` +
-        `Visual Inspection: 201 frames. Two nozzle welds show minor undercut, less than 1/32 in, within acceptance criteria per AWS D1.1 but noted for trend tracking.\n` +
-        `Maintenance Log: WO-2340 nozzle re-weld inspection scheduled next quarter.\n` +
-        `Risk Rating: LOW\n\n` +
+  `Executive Summary\n` +
+  `The fleet is in stable overall condition. Of the 5 vessels inspected, four are rated LOW risk and one — V-104 — is rated MODERATE risk requiring targeted follow-up. No vessel requires immediate shutdown, but V-104 warrants closer monitoring given its corrosion trend. The findings below cover each vessel individually, followed by fleet-wide calibration status and a prioritized action list.\n\n` +
 
-        `4. Vessel V-104, Amine Contactor\n` +
-        `Wall Thickness: Minimum 0.2210 in vs. required 0.1400 in. Buffer: 0.0810 in, tighter than fleet average.\n` +
-        `Corrosion Regression: rate -0.0058 in/yr, R-squared 0.93. Remaining safe life: 14.0 years.\n` +
-        `Visual Inspection: localized pitting cluster at the amine-rich inlet nozzle, depth 0.02 to 0.035 in, consistent with known amine service corrosion mechanisms.\n` +
-        `Maintenance Log: WO-2355 nozzle thickness re-verification due in 60 days.\n` +
-        `Risk Rating: MODERATE, recommend accelerated re-inspection interval, 12 months instead of 24.\n\n` +
+  `1. Vessel V-101, Primary Reactor Shell\n` +
+  `V-101 is in good condition. Wall thickness across all measurement clusters sits comfortably above the code minimum, and the corrosion rate has remained consistent with prior surveys — no acceleration has been detected. Minor micro-pitting near a bolt cluster was observed during visual inspection but is cosmetic in nature and does not affect structural integrity. One low-confidence weld artifact on the south seam has been queued for manual review during Q3 maintenance, which is standard practice for reflective anomalies of this type.\n\n` +
+  `On the maintenance side, an insulation repair work order is overdue by about a week but carries low priority. A bolt torque re-check has been completed and is waiting on sign-off. The next scheduled relief valve check is on track.\n` +
+  `Risk Rating: LOW\n\n` +
 
-        `5. Vessel V-105, Flash Drum\n` +
-        `Wall Thickness: Minimum 0.3390 in vs. required 0.1150 in. Buffer: 0.2240 in.\n` +
-        `Corrosion Regression: rate -0.0019 in/yr, R-squared 0.88. Remaining safe life: 117.9 years.\n` +
-        `Visual Inspection: clean across all 165 frames.\n` +
-        `Risk Rating: LOW\n\n` +
+  `2. Vessel V-102, Secondary Separator\n` +
+  `One of the cleanest vessels in the fleet. Thickness readings are uniform across all quadrants, the corrosion rate is among the lowest recorded, and visual inspection across all frames returned no anomalies. Gasket witness marks are uniform and no open work orders are outstanding. Nothing to flag here.\n` +
+  `Risk Rating: LOW\n\n` +
 
-        `6. Vessel V-106, Sour Water Stripper\n` +
-        `Wall Thickness: Minimum 0.1972 in vs. required 0.1300 in. Buffer: 0.0672 in.\n` +
-        `Corrosion Regression: rate -0.0051 in/yr, R-squared 0.90. Remaining safe life: 13.2 years.\n` +
-        `Visual Inspection: weld seam near tray support ring shows a hairline indication, confidence 0.61, recommended for dye-penetrant follow-up.\n` +
-        `Risk Rating: MODERATE, manual weld re-review required before next operating cycle.\n\n` +
+  `3. Vessel V-103, Knockout Drum\n` +
+  `V-103 is in good shape overall, though one measurement quadrant came in slightly below the cluster average and was flagged for a re-scan as a precaution. Visual inspection identified minor undercut at two nozzle welds, both within acceptance criteria. These are not structural concerns at present but have been noted for trend tracking. A nozzle re-weld inspection is already scheduled for next quarter, which appropriately covers this finding.\n` +
+  `Risk Rating: LOW\n\n` +
 
-        `7. Vessel V-107, Nozzle Interface Manifold\n` +
-        `Wall Thickness: Minimum 0.1488 in vs. required 0.1200 in. Buffer: 0.0288 in, lowest margin in the fleet.\n` +
-        `Corrosion Regression: rate -0.0089 in/yr, R-squared 0.95, high confidence. Remaining safe life: 3.2 years at current rate.\n` +
-        `Visual Inspection: localized wall loss at the 6-inch nozzle-to-shell interface, consistent with flow-accelerated corrosion. Depth trend has increased 18% versus the prior survey.\n` +
-        `Maintenance Log: no open work order currently covers this finding.\n` +
-        `Risk Rating: ELEVATED, recommend immediate engineering review, interim inspection interval reduction to 6 months, and evaluation of flow-diverter or cladding remediation options.\n\n` +
+  `4. Vessel V-104, Amine Contactor\n` +
+  `V-104 warrants closer attention. The corrosion buffer is tighter than the fleet average, and the corrosion rate has increased noticeably compared to its three-cycle historical average — a pattern consistent with known amine service degradation mechanisms. Visual inspection confirmed localized pitting at the amine-rich inlet nozzle, with pit depths in a range that is not immediately alarming but is trending in the wrong direction. A nozzle thickness re-verification is due within the next two months and should be treated as a firm deadline rather than a soft target. The inspection interval for this vessel should be shortened going forward.\n` +
+  `Risk Rating: MODERATE — inspection interval reduced to 12 months.\n\n` +
 
-        `8. Vessel V-108, Utility Separator North\n` +
-        `Wall Thickness: Minimum 0.2604 in vs. required 0.1100 in. Buffer: 0.1504 in.\n` +
-        `Corrosion Regression: rate -0.0021 in/yr, R-squared 0.87. Remaining safe life: 71.6 years.\n` +
-        `Visual Inspection: 143 frames, no defects above threshold.\n` +
-        `Maintenance Log: no open work orders.\n` +
-        `Risk Rating: LOW\n\n` +
+  `5. Vessel V-105, Flash Drum\n` +
+  `V-105 is performing well. Thickness is solid, the corrosion rate is slow, and visual inspection across all frames was clean. No maintenance items are outstanding and no follow-up is required at this time.\n` +
+  `Risk Rating: LOW\n\n` +
 
-        `9. Vessel V-109, Utility Separator South\n` +
-        `Wall Thickness: Minimum 0.2718 in vs. required 0.1100 in. Buffer: 0.1618 in.\n` +
-        `Corrosion Regression: rate -0.0018 in/yr, R-squared 0.86. Remaining safe life: 89.9 years.\n` +
-        `Visual Inspection: clean across 138 frames.\n` +
-        `Risk Rating: LOW\n\n` +
+  `Fleet-Wide Calibration & Trend Notes\n` +
+  `All but one of the ultrasonic thickness gauges used across this cycle are within their certification window. The exception is gauge UT-11, which expires in four days and must be recalibrated before its next deployment. All vision rig cameras and dye-penetrant kits are current.\n\n` +
+  `Four of the five vessels are behaving consistently with their long-run corrosion averages — a sign of stable fleet health. V-104 is the one outlier, showing a rate increase significant enough to drive its MODERATE classification and warrants the closest attention going into the next cycle. All analysis was conducted entirely on-premises, with no data leaving the local environment at any point.\n\n` +
 
-        `10. Vessel V-110, Buffer Tank A\n` +
-        `Wall Thickness: Minimum 0.3105 in vs. required 0.1050 in. Buffer: 0.2055 in.\n` +
-        `Corrosion Regression: rate -0.0027 in/yr, R-squared 0.90. Remaining safe life: 76.1 years.\n` +
-        `Visual Inspection: minor surface staining near the sump drain, non-structural, noted for housekeeping only.\n` +
-        `Risk Rating: LOW\n\n` +
-
-        `11. Vessel V-111, Buffer Tank B\n` +
-        `Wall Thickness: Minimum 0.2991 in vs. required 0.1050 in. Buffer: 0.1941 in.\n` +
-        `Corrosion Regression: rate -0.0024 in/yr, R-squared 0.89. Remaining safe life: 80.9 years.\n` +
-        `Visual Inspection: clean, no findings.\n` +
-        `Risk Rating: LOW\n\n` +
-
-        `12. Vessel V-112, Emergency Blowdown Drum\n` +
-        `Wall Thickness: Minimum 0.3387 in vs. required 0.1200 in. Buffer: 0.2187 in.\n` +
-        `Corrosion Regression: rate -0.0015 in/yr, R-squared 0.85. Remaining safe life: 145.8 years.\n` +
-        `Visual Inspection: clean across 121 frames; relief nozzle seating surface shows normal witness marks.\n` +
-        `Maintenance Log: last relief-path function test passed, no follow-up required.\n` +
-        `Risk Rating: LOW\n\n` +
-
-        `Fleet-Wide Sensor Calibration Audit\n` +
-        `All 14 ultrasonic thickness gauges, 6 vision rig camera arrays, and 3 dye-penetrant kits used across this survey cycle were cross-checked against the calibration registry. 13 of 14 gauges are within their certification window; gauge UT-11 expires in 4 days and should be recalibrated before its next scheduled use. All vision rig cameras and dye-penetrant kits are current.\n\n` +
-
-        `Historical Trend Cross-Check\n` +
-        `Comparing this cycle against the previous three inspection reports, 2023, 2024, 2025, 10 of 12 vessels show corrosion rates within plus or minus 8% of their long-run average, indicating stable degradation behavior. V-104 and V-107 show rate increases of 21% and 34% respectively versus their 3-cycle average, which drove their elevated risk classifications above.\n\n` +
-
-        `Sovereignty & Security Compliance\n` +
-        `100% of reasoning, vector retrieval, image inference, and all twelve Python sandbox regression runs occurred inside the air-gapped environment. Zero external network egress bytes logged across the full fleet analysis. Audit log hash: a3f9c1...e7d2, chained per-vessel sub-hashes available on request. No cloud API calls, no external model weights, no telemetry left the local cluster at any point in this run.\n\n` +
-
-        `Prioritized Next-Action Checklist\n` +
-        `1. V-107: escalate to engineering for immediate review of nozzle interface wall loss, highest priority.\n` +
-        `2. V-106: schedule dye-penetrant follow-up on tray support ring weld indication.\n` +
-        `3. V-104: shorten inspection interval to 12 months given amine-service pitting trend.\n` +
-        `4. Recalibrate gauge UT-11 before next use, expires in 4 days.\n` +
-        `5. Complete manual review of V-101's low-confidence weld-toe artifact during Q3 maintenance.\n` +
-        `6. Close out WO-2304 insulation repair on V-101, currently overdue.\n` +
-        `7. Confirm WO-2340 nozzle re-weld inspection is booked for V-103 next quarter.\n` +
-        `8. File the sump-drain staining observation on V-110 with facilities for housekeeping only.\n\n` +
-
-        `The full fleet inspection memo, including per-vessel raw survey data tables and regression plots, has been compiled and staged for review below.`;
-
+  `Prioritized Actions\n` +
+  `The most pressing item is V-104 — the inspection interval should be formally shortened to 12 months in the maintenance system and the nozzle thickness re-verification treated as a hard deadline. Gauge UT-11 recalibration needs to happen within the next four days before its next use. The remaining items — manual weld review on V-101, closing the overdue insulation work order, and confirming the V-103 nozzle inspection booking for next quarter — are lower priority but should be cleared within the current quarter.`;
       const words = fullResponse.split(' ');
       const chunkStartTime = Date.now();
 
