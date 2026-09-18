@@ -1,3 +1,6 @@
+//changed sidebar.jsx to include recent tasks and a new task button, as well as a search button. The recent tasks section shows the top 3 most recent tasks, and the new task button creates a new conversation and navigates to the workspace. The search button opens a search modal. The sidebar also includes navigation sections for Workspace, Engine & Tools, Governance, and Administration (if the user has the admin role). The bottom section shows the user's department and clearance level.
+
+
 import React from 'react';
 import { NavLink, useNavigate, useLocation } from 'react-router-dom';
 import {
@@ -53,7 +56,6 @@ export const Sidebar = ({ isCollapsed, setIsCollapsed, onOpenSearch, onOpenTelem
   const engineNav = [
     { to: '/models', label: 'Models', icon: <Cpu size={16} /> },
     { to: '/tools', label: 'Tools', icon: <Wrench size={16} /> },
-    { to: '/tasks', label: 'Tasks', icon: <Zap size={16} /> },
   ];
 
   const governanceNav = [
@@ -167,7 +169,7 @@ export const Sidebar = ({ isCollapsed, setIsCollapsed, onOpenSearch, onOpenTelem
           <div className="px-3 pb-2 pt-1 border-b border-slate-800/60">
             <div className="flex items-center justify-between px-1 py-1 mb-1">
               <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 flex items-center gap-1.5 font-semibold">
-                <Clock size={11} className="text-sky-400" /> Recent Tasks
+                <Clock size={11} className="text-sky-400" />CHAT HISTORY
               </span>
               <button
                 onClick={() => navigate('/tasks')}
